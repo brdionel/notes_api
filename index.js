@@ -1,5 +1,4 @@
 import express from "express";
-import session from "express-session";
 import notesRouter from "./routes/notes.js";
 import categoriesRouter from "./routes/categories.js";
 import imagesRouter from "./routes/images.js";

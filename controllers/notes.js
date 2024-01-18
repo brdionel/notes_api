@@ -58,7 +58,6 @@ export class NotesController {
     try {
       const { id } = req.params;
       const result = validatePatialNote(req.body);
-      console.log({ result, id });
       if (result.error) {
         return res.status(400).json({
           error: JSON.parse(result.error.message),
@@ -70,7 +69,6 @@ export class NotesController {
         ...result.data,
       };
       const updatedNote = await NoteModel.update(id, input);
-      console.log({ updatedNote });
       res.json({
         updatedNote,
       });

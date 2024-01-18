@@ -116,15 +116,13 @@ export class NoteModel {
         `UPDATE notes SET ${setClause} WHERE id = ?`,
         updateValues
       );
-      console.log({ updateValues, responseUpdate });
-      if (!categories || !categoriessiones.length) {
-        console.log("nao tem category o update");
+
+      if (!categories || !categories.length) {
         await connection.commit();
         const updatedNote = {
           id,
           ...updatedFields,
         };
-        console.log({ updatedNote });
         return updatedNote;
       }
 
@@ -132,7 +130,7 @@ export class NoteModel {
         "DELETE FROM notes_category WHERE note_id = ?;",
         [id]
       );
-      console.log({ response });
+
       for (const categoryId of categories) {
         await connection.query(
           "INSERT INTO notes_category (note_id, category_id) VALUES (?, ?)",
@@ -144,7 +142,7 @@ export class NoteModel {
         `SELECT id, name FROM categoriesNotes WHERE id IN (?);`,
         [[...categories]]
       );
-      console.log({ categoriesFounded });
+      
       await connection.commit();
 
       const updatedNote = {
