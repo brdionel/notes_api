@@ -6,7 +6,7 @@ const connectionConfig = config.databaseURL;
 const connection = await mysql.createConnection(connectionConfig);
 
 export class NoteModel {
-  static async getAll({userId, page = 1, limit = 5}) {
+  static async getAll({userId, page = 1, limit = 10}) {
     try {
       await connection.beginTransaction();
       var lastPage = 1;
