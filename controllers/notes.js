@@ -6,12 +6,11 @@ export class NotesController {
   static async getAll(req, res, next) {
     try {
       const { userId } = req;
-      const notes = await NoteModel.getAll(userId);
-      if (!notes)
+      const { page } = req.query;
+      const response = await NoteModel.getAll({userId, page});
+      if (!response)
         return res.status(404).json({ message: "nao achamos note nenhum" });
-      res.json({
-        notes,
-      });
+      res.json(response);
     } catch (error) {
       next(error);
     }

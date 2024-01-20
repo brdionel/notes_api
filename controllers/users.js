@@ -5,10 +5,10 @@ export class UsersController {
   static async getAll(req, res, next) {
     try {
       const { email } = req.query;
-      const users = await UserModel.getAll({ email });
-      res.json({
-        users,
-      });
+      const response = await UserModel.getAll({ email });
+      res.json(
+        response,
+      );
     } catch (error) {
       next(error);
     }

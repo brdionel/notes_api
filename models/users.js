@@ -44,10 +44,10 @@ export class UserModel {
         [email]
       );
       if (!user.length) return null;
-      return user;
+      return true;
     }
     const [users] = await connection.query("SELECT * FROM users;");
-    return user;
+    return users;
   }
 
   static async getById(id) {

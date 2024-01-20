@@ -6,14 +6,26 @@ const connectionConfig = config.databaseURL;
 const connection = await mysql.createConnection(connectionConfig);
 
 export class NoteModel {
-  static async getAll(userId) {
+  static async getAll({userId, page = 1, limit = 5}) {
     try {
       await connection.beginTransaction();
+      var lastPage = 1;
       const finalNotes = [];
-      const [notes] = await connection.query(
-        "SELECT * FROM notes WHERE userId = ?;",
+
+      const [response] = await connection.query(
+        "SELECT COUNT(*) as notesCount FROM notes WHERE userId = ?;",
         [userId]
       );
+
+      const countNotes = response[0].notesCount;
+      lastPage = Math.ceil(countNotes/limit)
+      const offset = (page - 1) * limit;
+
+      const [notes] = await connection.query(
+        "SELECT * FROM notes WHERE userId = ? LIMIT ? OFFSET ?;",
+        [userId, limit, offset]
+      );
+
       const [categories] = await connection.query(
         "SELECT * FROM categoriesNotes;"
       );
@@ -35,7 +47,15 @@ export class NoteModel {
         finalNotes.push(noteToAdd);
       }
       await connection.commit();
-      return finalNotes;
+      return {
+        data: finalNotes,
+        meta: {
+          currentPage: page,
+          totalPages: lastPage,
+          pageSize: limit,
+          totalNotes: countNotes
+        }
+      };
     } catch (error) {
       throw new Error("Error getting notes");
     }
@@ -152,6 +172,7 @@ export class NoteModel {
       };
       return updatedNote;
     } catch (error) {
+      console.log({error})
       await connection.rollback();
       throw new Error("Error updating note");
     }
