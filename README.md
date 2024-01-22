@@ -4,6 +4,7 @@
 
 ## Features
 - :clipboard: Note managements.
+- 🗂️ Category management.
 - :bust_in_silhouette: Authentication and Authorization.
 - :key: Data encryption for confidential information.
 - 💾 Persistence with MySQL relationship database.
@@ -15,6 +16,7 @@
 
 ## Características
 - :clipboard: Gestión de notas.
+- 🗂️ Gestión de categorías.
 - :bust_in_silhouette: Autenticación y autorización.
 - :key: Encriptación de datos para información confidencial.
 - 💾 Persistencia con base de datos relacional MySQL.
