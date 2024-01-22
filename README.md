@@ -1,5 +1,6 @@
 # Taking Notes Api
 
+## English Version
 <p>The backend was created with Node.JS and MySQL</p>
 
 ## Features
@@ -8,6 +9,8 @@
 - :key: Data encryption for confidential information.
 - 💾: Persistence with MySQL relationship database.
 - 📄: Pagination.
+
+## Spanish Version
 
 <p>El backend fue creado con Node.JS y MySQL</p>
 
