@@ -6,4 +6,5 @@
 - :clipboard: Note managements.
 - :bust_in_silhouette: Authentication and Authorization.
 - :key: Data encryption for confidential information.
-- 💾 Persistence with MySQL relationship database.
+- 💾: Persistence with MySQL relationship database.
+- 📄: Pagination.
