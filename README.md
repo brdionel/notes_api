@@ -8,3 +8,12 @@
 - :key: Data encryption for confidential information.
 - 💾: Persistence with MySQL relationship database.
 - 📄: Pagination.
+
+<p>El backend fue creado con Node.JS y MySQL</p>
+
+## Características
+- :clipboard: Gestión de notas.
+- :bust_in_silhouette: Autenticación y autorización.
+- :key: Encriptación de datos para información confidencial.
+- 💾: Persistencia con base de datos relacional MySQL.
+- 📄: Paginación.
