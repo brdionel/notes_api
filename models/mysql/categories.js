@@ -1,4 +1,4 @@
-import config from "../config/index.js";
+import config from "../../config/index.js";
 
 import mysql from "mysql2/promise";
 
@@ -17,4 +17,6 @@ export class CategoryModel {
       throw new Error("Error getting categories");
     }
   }
+
+  
 }

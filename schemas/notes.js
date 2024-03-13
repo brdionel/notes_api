@@ -7,9 +7,9 @@ const noteSchema = z.object({
       required_error: "O title é necessario",
     })
     .min(5, { message: "Title must be 5 or more characters long" }),
-  content: z.string(),
+  content: z.optional(z.string()),
   is_archived: z.boolean().default(false),
-  categories: z.array(z.number()).default([]),
+  categories: z.array(z.string()).default([]),
 });
 
 export function validateNote(object) {

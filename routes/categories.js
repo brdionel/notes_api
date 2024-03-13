@@ -1,9 +1,15 @@
 import { Router } from "express";
 import { CategoriesController } from "../controllers/categories.js";
-const router = Router();
 
-router.get("/", CategoriesController.getAll);
+export const createCategoryRouter = ({ CategoryModel }) => {
 
-router.get("/:id", CategoriesController.getById);
+    const router = Router();
 
-export default router;
+    const CategoryController = new CategoriesController({ CategoryModel });
+    
+    router.get("/", CategoryController.getAll);
+    router.post("/", CategoryController.create);
+    router.get("/:id", CategoryController.getById);
+
+    return router;
+}

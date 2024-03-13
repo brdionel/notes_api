@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
+    "start:mongogb-dev": "nodemon server_with_mongodb.js",
+    "start:mongogb": "node server_with_mongodb.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -21,6 +23,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.0",
     "mysql2": "^3.6.5",
     "zod": "^3.22.4"
   }

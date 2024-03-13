@@ -1,8 +1,15 @@
 import { Router } from "express";
 import { RegistrationController } from "../controllers/registration.js";
-const router = Router();
 
-router.post("/signup", RegistrationController.create);
-router.post("/login", RegistrationController.login);
+export const createRegistrationRouter = ({ UserModel }) => { 
 
-export default router;
+    const router = Router();
+
+    const registrationController = new RegistrationController({ UserModel })
+    
+    router.post("/signup", registrationController.create);
+    router.post("/login", registrationController.login);
+    
+    return router
+
+}

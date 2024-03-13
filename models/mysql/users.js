@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 import bcrypt from "bcrypt";
-import config from "../config/index.js";
+import config from "../../config/index.js";
 
 const connectionConfig = config.databaseURL;
 
@@ -9,8 +9,6 @@ const connection = await mysql.createConnection(connectionConfig);
 export class UserModel {
   static async create(input) {
     try {
-      const { email, password } = input.data;
-
       const [userWithEmail] = await connection.query(
         `SELECT * FROM users WHERE email = ?;`,
         [email]
@@ -20,6 +18,8 @@ export class UserModel {
           error: true,
           message: "Email already uses",
         };
+
+      const { password } = input.data;
 
       const hash = await bcrypt.hash(password, 10);
       const [response] = await connection.query(

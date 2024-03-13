@@ -7,7 +7,6 @@ export function userExtractor(req, res, next) {
       message: "nao tem token",
     });
   }
-
   let token = null;
   if (authorization && authorization.toLowerCase().startsWith("bearer")) {
     token = authorization.substring(7);
@@ -17,7 +16,7 @@ export function userExtractor(req, res, next) {
   try {
     decodedToken = jwt.verify(token, process.env.SECRET_JWT);
   } catch (error) {}
-
+  
   if (!decodedToken.id) {
     return res.status(401).json({
       message: "token nao é valido",
